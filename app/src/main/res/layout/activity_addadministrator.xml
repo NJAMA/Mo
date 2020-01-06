@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Addtudent">
+    tools:context=".Addadministrator">
 
     <EditText
         android:id="@+id/editText3"
@@ -72,7 +72,7 @@
         android:hint="@string/Suname"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.362"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
@@ -97,6 +97,7 @@
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         android:orientation="horizontal"
+        android:onClick="onClicka"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText15">
 
@@ -104,13 +105,15 @@
             android:id="@+id/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+
+            android:text="MALE" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="FEMALE"
+            />
 
     </RadioGroup>
 
