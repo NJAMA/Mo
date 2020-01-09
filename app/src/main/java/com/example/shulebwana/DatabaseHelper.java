@@ -5,37 +5,48 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.shulebwana.modal.Administrator;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     private static int version=1;
     private static String databasename="shulebwana";
-    public static final String Firstname="FirstNAME";
-    public  static final String SecondName="SecondNAME";
-    public static final String Surname="SurNAME";
-    public static final String Emaill="Email";
-    public static final String phoneNumber="PHONENUMBER";
-    public static final String birthdat="BIRTHDATE";
+    public static final String FIRSTNAME="FIRSTNAME";
+    public  static final String SECONDNAME="SECONDNAME";
+    public static final String SURNAME="SURNAME";
+    public static final String EMAIL="EMAIL";
+    public static final String PHONENUMBER="PHONENUMBER";
+    public static final String BIRTHDATE="BIRTHDATE";
+    public static final String GENDER="GENDER";
+    public static final String REGION="REGION";
+    public static final String WARD="WARD";
+    public static final String DISTRICT="DISTRICT";
+    public static final String PASSWORD="PASSWORD";
+
+    private static String ADMINSTRATOR="CREATE TABLE ADMINISTRATOR(" + "_id TEXT PRIMARY KEY , "  + FIRSTNAME+" TEXT,"+SECONDNAME+ "TEXT ,"+ SURNAME+"TEXT , " +EMAIL+" TEXT," + PHONENUMBER +"INTERGER ," +
+         BIRTHDATE +"TEXT ," + GENDER +"TEXT,  "   +  REGION+" TEXT,"+WARD +"TEXT,"+ DISTRICT+" TEXT , "+"PASSWORD TEXT"+");";
+
+    /*private static String ADMINADDRESS="CREATE TABLE ADMINADRESS(" + "_id INTEGER PRIMARY KEY, "  +  REGION+" TEXT,"+WARD +"TEXT,"+ DISTRICT+" TEXT , " +WARD+" TEXT ," +
+            ");";*/
+
+    private static String PROGRAMME="CREATE TABLE PROGRAMME("+"_id TEXT PRIMARY KEY,"+ "NAME TEXT"+");";
+
+    private static String COURSE="CREATE TABLE COURSE("+"_id TEXT PRIMARY KEY,"+ "COURSENAME TEXT,"+"CREDITS TEXT,"+"YEAROFSTUDY TEXT,"+"SEMISTER TEXT,"+"CHOICE TEXT" +");";
+
+    private static String STUDENT="CREATE TABLE STUDENT(" + "_id TEXT PRIMARY KEY , "  + FIRSTNAME+" TEXT,"+SECONDNAME+ "TEXT ,"+ SURNAME+"TEXT , " +EMAIL+" TEXT," + PHONENUMBER +"INTERGER ," + BIRTHDATE +"TEXT ," + GENDER +"TEXT,  "   +  REGION+" TEXT,"+WARD +"TEXT,"+ DISTRICT+" TEXT , " +WARD+" TEXT ,"+"PASSWORD TEXT" +");";
 
 
 
- private static String Administrator="CREATE TABLE ADMINISTRATOR(" + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "  + " FirstNAME TEXT  NOT NULL,"+"SecondNAME TEXT NOT NULL,"+ "SurNAME TEXT NOT NULL, " +"Email TEXT NOT NULL," + "PHONENUMBER INTERGER NOT NULL," +
-         "BIRTHDATE TEXT NOT NULL," +
-         "GENDER INTERGER " +
-         ");";
+   /* private static String STUDENTADDRESS="CREATE TABLE ADMINADRESS(" + "_id INTEGER PRIMARY KEY, "  +  REGION+" TEXT,"+WARD +"TEXT,"+ DISTRICT+" TEXT , " +WARD+" TEXT ," +
+            ");";*/
+   private static String STAFF="CREATE TABLE STAFF(" + "_id TEXT PRIMARY KEY , "  + FIRSTNAME+" TEXT,"+SECONDNAME+ "TEXT ,"+ SURNAME+"TEXT , " +EMAIL+" TEXT," + PHONENUMBER +"INTERGER ," +
+           BIRTHDATE +"TEXT ," + GENDER +"TEXT,  "   +  REGION+" TEXT,"+WARD +"TEXT,"+ DISTRICT+" TEXT , " +WARD+" TEXT ,"+"PASSWORD TEXT" +");";
 
-    private static String student="CREATE TABLE STUDENT("+ "_id INTEGER PRIMARY KEY AUTOINCREMENT, " + " FirstNAME TEXT NOT NULL ,"  +"SecondNAME TEXT NOT NULL,"+ "SurNAME TEXT NOT NULL, " +"Email TEXT NOT NULL," + "PHONENUMBER TEXT NOT NULL," +
-            "BIRTHDATE TEXT NOT NULL," +
-            "GENDER INTERGER NOT NULL" +
-            ");";
-    private static String course="CREATE TABLE COURSE(" + "COURSECODE INTEGER PRIMARY KEY AUTOINCREMENT, " + " COURSENAME TEXT NOT NULL ,"  +"CREDITS INTERGER NOT NULL,"
-            + "STUDYYEAR INTEGER NOT NULL, "
-            +"SEMISTER INTERGER NOT NULL" +
-            ");";
-    private static String Staff="CREATE TABLE STAFF(" + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "  + " FirstNAME TEXT NOT NULL ,"+"SecondNAME TEXT NOT NULL,"+ "SurNAME TEXT NOT NULL, " +"Email TEXT NOT NULL," + "PHONENUMBER TEXT NOT NULL," +
-            "BIRTHDATE NOT NULL," +
-            "GENDER INTERGER " +
-            ");";
+private static String LOGIN="CREATE TABLE LOGIN("+"USERNAME TEXT,"+"PASSWORD TEXT"+");";
+
+/* private static String STAFFADRESS="CREATE TABLE ADMINADRESS(" + "_id INTEGER PRIMARY KEY, "  +  REGION+" TEXT,"+WARD +"TEXT,"+ DISTRICT+" TEXT , " +WARD+" TEXT ," +
+            ");";*/
 
     public DatabaseHelper(Context context) {
         super(context, databasename, null, version);
@@ -46,10 +57,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-       sqLiteDatabase.execSQL(Administrator);
-        sqLiteDatabase.execSQL(student);
-        sqLiteDatabase.execSQL(course);
-        sqLiteDatabase.execSQL(Staff);
+       sqLiteDatabase.execSQL(ADMINSTRATOR);
+        sqLiteDatabase.execSQL(PROGRAMME);
+        sqLiteDatabase.execSQL(COURSE);
+        sqLiteDatabase.execSQL(STUDENT);
+        sqLiteDatabase.execSQL(LOGIN);
+        sqLiteDatabase.execSQL(STAFF);
 
     }
 
@@ -60,19 +73,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 */
     }
 
-    public boolean insertdata(String Fname,String Middle,String Surame,String Email,String birthdate,String phonenumber,String gender)
+    public boolean insertdata(Administrator admin)
     {
-        /*SQLiteDatabase sq=this.getWritableDatabase();
+        SQLiteDatabase sq=this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
 
-        contentValues.put(Firstname,Fname);
-        contentValues.put(SecondName,Middle);
-        contentValues.put(Surname,Surame);
-        contentValues.put(Emaill,Email);
-        contentValues.put(phoneNumber,phonenumber);
-        contentValues.put(birthdat,birthdate);
-          long result= sq.insert(Administrator,null,contentValues);
-*/
+        contentValues.put(FIRSTNAME,admin.getFirstname());
+        contentValues.put(SECONDNAME,admin.getSecondname());
+        contentValues.put(SURNAME,admin.getSurname());
+        contentValues.put(EMAIL,admin.getEmail());
+        contentValues.put(PHONENUMBER,admin.getPhonenumber());
+        contentValues.put(BIRTHDATE,admin.getBirthdate());
+        contentValues.put(GENDER,admin.getGender());
+        contentValues.put(REGION,admin.getRegion());
+        contentValues.put(WARD,admin.getWard());
+        contentValues.put(DISTRICT,admin.getDistrict());
+        contentValues.put(PASSWORD,admin.getPassword());
+
+          long result= sq.insert(ADMINSTRATOR,null,contentValues);
+
           if(true)
               return false;
 

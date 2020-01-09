@@ -10,8 +10,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class Addadministrator extends AppCompatActivity implements View.OnClickListener {
+import com.example.shulebwana.modal.Administrator;
 
+public class Addadministrator extends AppCompatActivity  {
+
+    Administrator admin;
     public String geder;
 
     DatabaseHelper my;
@@ -26,21 +29,21 @@ public class Addadministrator extends AppCompatActivity implements View.OnClickL
 
        my = new DatabaseHelper(this);
 
-        editfname = (EditText) findViewById(R.id.editText3);
-        editMname = (EditText) findViewById(R.id.editText7);
-        editSname = (EditText) findViewById(R.id.editText14);
-        editEmail = (EditText) findViewById(R.id.editText8);
-        editphonenumber = (EditText) findViewById(R.id.editText15);
-        Birthdate = (EditText) findViewById(R.id.editText5);
-        butAdmin = (Button) findViewById(R.id.button11);
-        /*butAdmin.setOnClickListener(this);
-        regstrAdmin();*/
+        editfname = findViewById(R.id.editText3);
+        editMname =  findViewById(R.id.editText7);
+        editSname = findViewById(R.id.editText14);
+        editEmail = findViewById(R.id.editText8);
+        editphonenumber =  findViewById(R.id.editText15);
+        Birthdate = findViewById(R.id.editText5);
+        butAdmin =  findViewById(R.id.button11);
+
+        regstrAdmin();/*  butAdmin.setOnClickListener(this);*/
 
 
     }
 
     public void onClicka(View view) {
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        RadioGroup radioGroup =  findViewById(R.id.radioGroup);
         int id = radioGroup.getCheckedRadioButtonId();
         switch (id) {
             case R.id.radioButton:
@@ -51,39 +54,39 @@ public class Addadministrator extends AppCompatActivity implements View.OnClickL
         }
     }
 
- /*  public void regstrAdmin() {
+   public void regstrAdmin() {
        butAdmin.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        boolean isInserted = my.insertdata(editfname.getText().toString(),
-                                editMname.getText().toString(), editSname.getText().toString(), editEmail.getText().toString(), Birthdate.getText().toString(), editphonenumber.getText().toString(), geder);
+               new View.OnClickListener() {
+                   @Override
+                   public void onClick(View view) {
+
+                       admin.setFirstname(editfname.getText().toString());
+                       admin.setSecondname(editMname.getText().toString());
+                       admin.setSurname(editSname.getText().toString());
+                       admin.setEmail(editEmail.getText().toString());
+                       admin.setBirthdate(Birthdate.getText().toString());
+                       admin.setPhonenumber(editphonenumber.getText().toString());
+                       admin.setGender(geder);
+                       admin.setRegion("");
+                       admin.setDistrict("");
+                       admin.setAdmin_no("");
+                       admin.setPassword(admin.getSurname().toUpperCase());
 
 
-                        if (isInserted == true)
-                            Toast.makeText(Addadministrator.this, "Data inserted", Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(Addadministrator.this, " Data notinserted", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-        );
-
-    }
-*/
-    @Override
-    public void onClick(View view) {
-        boolean isInserted = my.insertdata(editfname.getText().toString(),
-                editMname.getText().toString(), editSname.getText().toString(), editEmail.getText().toString(), Birthdate.getText().toString(), editphonenumber.getText().toString(), geder
-        );
+                       boolean isInserted = my.insertdata(admin);
 
 
-        if (isInserted == true)
-            Toast.makeText(Addadministrator.this, "Data inserted", Toast.LENGTH_LONG).show();
-        else
-            Toast.makeText(Addadministrator.this, " Data notinserted", Toast.LENGTH_LONG).show();
+                       if (isInserted == true)
+                           Toast.makeText(Addadministrator.this, "Data inserted", Toast.LENGTH_LONG).show();
+                       else
+                           Toast.makeText(Addadministrator.this, " Data notinserted", Toast.LENGTH_LONG).show();
+                   }
+               }
 
-    }
-}
+       );
+
+
+   }}
+
 
 

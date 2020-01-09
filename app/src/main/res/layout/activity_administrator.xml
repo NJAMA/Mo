@@ -73,7 +73,7 @@
         android:id="@+id/button3"
         android:layout_width="302dp"
         android:layout_height="44dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="132dp"
         android:background="@drawable/rounded"
         android:text="@string/viewinstrcu"
         app:layout_constraintEnd_toEndOf="parent"
