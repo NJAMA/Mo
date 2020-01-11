@@ -9,11 +9,10 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.shulebwana.modal.Staff;
 import com.example.shulebwana.modal.Student;
 import com.facebook.stetho.Stetho;
 
-public class addStaff extends AppCompatActivity {
+public class AddStudent extends AppCompatActivity {
     public String geder;
 
 
@@ -24,8 +23,10 @@ public class addStaff extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_staff);
+        setContentView(R.layout.activity_student);
         Stetho.initializeWithDefaults(this);
+
+
 
         editfname = (EditText) findViewById(R.id.editText3);
         editMname =  (EditText) findViewById(R.id.editText7);
@@ -34,7 +35,7 @@ public class addStaff extends AppCompatActivity {
         editphonenumber = (EditText) findViewById(R.id.editText9);
         Birthdate =(EditText) findViewById(R.id.editText15);
         butstudent = (Button) findViewById(R.id.button11);
-        regstrstaff();
+        regstrstudent();
 
 
 
@@ -52,9 +53,9 @@ public class addStaff extends AppCompatActivity {
     }
 
 
-    public void regstrstaff() {
+    public void regstrstudent() {
 
-        my = new DatabaseHelper(this);
+       my = new DatabaseHelper(this);
         butstudent.setOnClickListener(
 
                 new View.OnClickListener() {
@@ -62,28 +63,29 @@ public class addStaff extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Staff staff=new Staff();
-                        staff.setStaffid("565456111");
-                        staff.setFirstname(editfname.getText().toString());
-                        staff.setSecondname(editMname.getText().toString());
-                        staff.setSurname(editSname.getText().toString());
-                        staff.setEmail(editEmail.getText().toString());
-                        staff.setBirthdate(Birthdate.getText().toString());
-                        staff.setPhonenumber(editphonenumber.getText().toString());
-                        staff.setGender(geder);
-                        staff.setRegion("MBEYA");
 
-                        staff.setDistrict("MBEYA");
-                        staff.setPassword(staff.getSurname().toUpperCase());
+                        Student student= new Student();
+                      student.setStudentid("565456");
+                       student.setFirstname(editfname.getText().toString());
+                       student.setSecondname(editMname.getText().toString());
+                       student.setSurname(editSname.getText().toString());
+                       student.setEmail(editEmail.getText().toString());
+                       student.setBirthdate(Birthdate.getText().toString());
+                       student.setPhonenumber(editphonenumber.getText().toString());
+                       student.setGender(geder);
+                       student.setRegion("MBEYA");
+
+                       student.setDistrict("MBEYA");
+                       student.setPassword(student.getSurname().toUpperCase());
 
 
 
-                        boolean isInserted = my.insertdatatt(staff);
+  boolean isInserted = my.insertdatata(student);
 
                         if (isInserted =true)
-                            Toast.makeText(addStaff.this, "Data inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddStudent.this, "Data inserted", Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(addStaff.this, " Data not inserted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddStudent.this, " Data not inserted", Toast.LENGTH_LONG).show();
                     }
                 }
 

@@ -9,12 +9,23 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import com.facebook.stetho.*;
 
 import com.example.shulebwana.modal.Administrator;
+import java.time.*;
+
 
 public class Addadministrator extends AppCompatActivity  {
 
-    Administrator admin;
+
+/*
+    LocalDate currentdate = LocalDate.now();
+
+    int aa=currentdate.getYear();
+*/
+String ab="2020";
+
+
     public String geder;
 
     DatabaseHelper my;
@@ -26,18 +37,18 @@ public class Addadministrator extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addadministrator);
-
+      Stetho.initializeWithDefaults(this);
        my = new DatabaseHelper(this);
 
-        editfname = findViewById(R.id.editText3);
-        editMname =  findViewById(R.id.editText7);
-        editSname = findViewById(R.id.editText14);
-        editEmail = findViewById(R.id.editText8);
-        editphonenumber =  findViewById(R.id.editText15);
-        Birthdate = findViewById(R.id.editText5);
-        butAdmin =  findViewById(R.id.button11);
 
-        regstrAdmin();/*  butAdmin.setOnClickListener(this);*/
+        editfname = (EditText) findViewById(R.id.editText3);
+        editMname =  (EditText) findViewById(R.id.editText7);
+        editSname = (EditText) findViewById(R.id.editText14);
+        editEmail = (EditText) findViewById(R.id.editText8);
+        editphonenumber = (EditText) findViewById(R.id.editText9);
+        Birthdate =(EditText) findViewById(R.id.editText15);
+        butAdmin = (Button) findViewById(R.id.button111);
+        regstrAdmin();
 
 
     }
@@ -55,11 +66,16 @@ public class Addadministrator extends AppCompatActivity  {
     }
 
    public void regstrAdmin() {
+
+
        butAdmin.setOnClickListener(
+
                new View.OnClickListener() {
+
                    @Override
                    public void onClick(View view) {
-
+                     Administrator admin= new Administrator();
+                     admin.setAdmin_no("lukelonnnn");
                        admin.setFirstname(editfname.getText().toString());
                        admin.setSecondname(editMname.getText().toString());
                        admin.setSurname(editSname.getText().toString());
@@ -67,19 +83,21 @@ public class Addadministrator extends AppCompatActivity  {
                        admin.setBirthdate(Birthdate.getText().toString());
                        admin.setPhonenumber(editphonenumber.getText().toString());
                        admin.setGender(geder);
-                       admin.setRegion("");
-                       admin.setDistrict("");
-                       admin.setAdmin_no("");
+                       admin.setRegion("MBEYA");
+                       admin.setDistrict("MBEYA");
                        admin.setPassword(admin.getSurname().toUpperCase());
+
+
 
 
                        boolean isInserted = my.insertdata(admin);
 
-
-                       if (isInserted == true)
+                    /*   boolean isInserted=my.insertdata(editfname.getText().toString(),editMname.getText().toString(),editSname.getText().toString(),editEmail.getText().toString(),editphonenumber.getText().toString(),"31101998",geder,"Mbeya",
+                               "MBEYA","MBEYA",editSname.getText().toString().toUpperCase());*/
+                       if (isInserted =true)
                            Toast.makeText(Addadministrator.this, "Data inserted", Toast.LENGTH_LONG).show();
                        else
-                           Toast.makeText(Addadministrator.this, " Data notinserted", Toast.LENGTH_LONG).show();
+                           Toast.makeText(Addadministrator.this, " Data not inserted", Toast.LENGTH_LONG).show();
                    }
                }
 

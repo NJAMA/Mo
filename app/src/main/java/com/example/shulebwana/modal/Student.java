@@ -8,6 +8,46 @@ public class Student {
     public String Surname;
     public String Email;
     public String Birthdate;
+    public String phonenumber;
+    public String region;
+    public String ward;
+    public String gender;
+    public String password;
+    public String District;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getDistrict() {
+        return District;
+    }
+
+    public void setDistrict(String district) {
+        District = district;
+    }
+
+    public String getStudent() {
+        return Studentid;
+    }
+
+    public void setStudentid(String student) {
+        Studentid = student;
+    }
+
+    public String Studentid;
 
     public String getFirstname() {
         return Firstname;
@@ -73,9 +113,6 @@ public class Student {
         this.ward = ward;
     }
 
-    public String phonenumber;
-    public String region;
-    public String ward;
 
 
 

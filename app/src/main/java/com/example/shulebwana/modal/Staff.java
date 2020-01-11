@@ -2,7 +2,7 @@ package com.example.shulebwana.modal;
 
 import java.time.LocalDate;
 
-public class Administrator {
+public class Staff {
 
 
     public String Firstname;
@@ -16,7 +16,7 @@ public class Administrator {
     public String District;
     public String Gender;
     public String password;
-    public String Admin_no;
+    public String Staffid ;
 
 
 
@@ -65,8 +65,8 @@ public class Administrator {
         this.password = password;
     }
 
-    public void setAdmin_no(String admin_no) {
-        Admin_no = admin_no;
+    public void setStaffid(String admin_no) {
+        Staffid = admin_no;
     }
 
 
@@ -114,8 +114,8 @@ public class Administrator {
         return password;
     }
 
-    public String getAdmin_no() {
-        return Admin_no;
+    public String getStaffid() {
+        return Staffid;
     }
 
 }
