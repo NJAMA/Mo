@@ -75,7 +75,7 @@ String ab="2020";
                    @Override
                    public void onClick(View view) {
                      Administrator admin= new Administrator();
-                     admin.setAdmin_no("lukelonnnn");
+                     admin.setAdmin_no("AAAAA");
                        admin.setFirstname(editfname.getText().toString());
                        admin.setSecondname(editMname.getText().toString());
                        admin.setSurname(editSname.getText().toString());
@@ -94,7 +94,7 @@ String ab="2020";
 
                     /*   boolean isInserted=my.insertdata(editfname.getText().toString(),editMname.getText().toString(),editSname.getText().toString(),editEmail.getText().toString(),editphonenumber.getText().toString(),"31101998",geder,"Mbeya",
                                "MBEYA","MBEYA",editSname.getText().toString().toUpperCase());*/
-                       if (isInserted =true)
+                       if (isInserted ==true)
                            Toast.makeText(Addadministrator.this, "Data inserted", Toast.LENGTH_LONG).show();
                        else
                            Toast.makeText(Addadministrator.this, " Data not inserted", Toast.LENGTH_LONG).show();
@@ -105,6 +105,7 @@ String ab="2020";
 
 
    }}
+
 
 
 
