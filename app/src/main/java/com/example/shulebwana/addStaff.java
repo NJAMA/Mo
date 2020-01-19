@@ -34,6 +34,7 @@ public class addStaff extends AppCompatActivity {
         editphonenumber = (EditText) findViewById(R.id.editText9);
         Birthdate =(EditText) findViewById(R.id.editText15);
         butstudent = (Button) findViewById(R.id.button11);
+
         regstrstaff();
 
 

@@ -2,6 +2,8 @@ package com.example.shulebwana;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.health.PackageHealthStats;
@@ -10,11 +12,19 @@ import com.example.shulebwana.modal.Administrator;
 import com.example.shulebwana.modal.Staff;
 import com.example.shulebwana.modal.Student;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
-    private static int version=10;
+    Context aa=
+ArrayList<String> aa= new ArrayList<>();
+    ArrayList<String> bb= new ArrayList<>();
+
+    private static int version=17;
     private static String databasename="School";
     public static final String FIRSTNAME="FIRSTNAME";
     public static final String TABLE="ADMINSTRATOR";
@@ -65,12 +75,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        Data aa= new Data();
        sqLiteDatabase.execSQL(ADMINSTRATOR);
        sqLiteDatabase.execSQL(PROGRAMME);
         sqLiteDatabase.execSQL(COURSE);
         sqLiteDatabase.execSQL(STUDENT);
         sqLiteDatabase.execSQL(LOGIN);
         sqLiteDatabase.execSQL(STAFF);
+        sqLiteDatabase.execSQL(aa.createDistrictTable);
+        sqLiteDatabase.execSQL(aa.createRegionTable);
+        sqLiteDatabase.execSQL(aa.createWardTable);
+        sqLiteDatabase.execSQL(aa.insertDistricts);
+/*        sqLiteDatabase.execSQL(aa.insertWardsGroup1);*/
+        sqLiteDatabase.execSQL(aa.insertWardsGroup2);
+        sqLiteDatabase.execSQL(aa.insertRegions);
+
 
     }
 
@@ -82,6 +101,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE3);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE4);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE5);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+"districts");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+"regions");
+       sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+"wards");
         onCreate(sqLiteDatabase);
 
     }
@@ -186,24 +208,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+  public  List<String> getR()
+    {
 
+        SQLiteDatabase sq=this.getWritableDatabase();
+        Cursor reg =sq.rawQuery("select region_name FROM regions ",null);
 
+        while(reg.moveToNext() )
+        {
+            String name = reg.getString(0);
 
+        aa.add(name);
+        }
 
+        return aa;
+    }
 
+    public  List<String> getD(String s)
+    {
 
+        SQLiteDatabase sq=this.getWritableDatabase();
+        Cursor reg =sq.rawQuery("select district_name FROM districts ",null);
 
+        while(reg.moveToNext() )
+        {
+            String name = reg.getString(0);
 
+            bb.add(name);
+        }
 
+        return bb;
+    }
 
+    public  List<String> getW(String s)
+    {
 
+        SQLiteDatabase sq=this.getWritableDatabase();
+        Cursor reg =sq.rawQuery("select district_name FROM districts ",null);
 
+        while(reg.moveToNext() )
+        {
+            String name = reg.getString(0);
 
+            bb.add(name);
+        }
 
-
-
-
-
+        return bb;
+    }
 
 
 
