@@ -4,29 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.shulebwana.R;
-
-public class addCourse extends AppCompatActivity {
+public class Viewadmin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addcourse);
+        setContentView(R.layout.activity_viewadmin);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

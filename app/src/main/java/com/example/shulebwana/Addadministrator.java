@@ -18,6 +18,7 @@ import com.facebook.stetho.*;
 
 import com.example.shulebwana.modal.Administrator;
 import java.time.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,10 +32,10 @@ public class Addadministrator extends AppCompatActivity  {
 */
 String ab="2020";
 
-   /* final DatabaseHelper database = new DatabaseHelper(getContext());*/
+
 
     public String geder;
-   /* DatabaseHelper myc= new DatabaseHelper(get);*/
+
 
     DatabaseHelper my;
     EditText editfname, editSname, editMname, editEmail, editphonenumber, Birthdate;
@@ -57,14 +58,13 @@ String ab="2020";
         editphonenumber = (EditText) findViewById(R.id.editText9);
         Birthdate = (EditText) findViewById(R.id.editText15);
         butAdmin = (Button) findViewById(R.id.button111);
-        region = findViewById(R.id.spinner2);
-        district = findViewById(R.id.spinner3);
-        spinner5 = findViewById(R.id.spinner5);
-        ward = findViewById(R.id.spinner4);
+        region= findViewById(R.id.spinner2);
+        district = findViewById(R.id.spinner5);
+        ward = findViewById(R.id.spinner);
 
 
-        List<String> regionsList = my.getR();
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, regionsList);
+        List<String> regions= my.getR();
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, regions);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         region.setAdapter(dataAdapter);
 
@@ -72,17 +72,17 @@ String ab="2020";
         region.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // Populate districts
+
                 List<String> districtsList = my.getD(region.getItemAtPosition(position).toString());
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, districtsList);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 district.setAdapter(dataAdapter);
 
-                // Listen to district selection
+
                 district.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                        // Populate districts
+
                         List<String> wardList = my.getW(district.getItemAtPosition(position).toString());
                         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, wardList);
                         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -106,6 +106,7 @@ String ab="2020";
 
         });
 
+        regstrAdmin();
     }
             public void onClicka(View view) {
         RadioGroup radioGroup =  findViewById(R.id.radioGroup);
@@ -131,7 +132,7 @@ String ab="2020";
                    @Override
                    public void onClick(View view) {
                      Administrator admin= new Administrator();
-                     admin.setAdmin_no("AAAAA");
+                     admin.setAdmin_no("ASW");
                        admin.setFirstname(editfname.getText().toString());
                        admin.setSecondname(editMname.getText().toString());
                        admin.setSurname(editSname.getText().toString());
@@ -139,17 +140,14 @@ String ab="2020";
                        admin.setBirthdate(Birthdate.getText().toString());
                        admin.setPhonenumber(editphonenumber.getText().toString());
                        admin.setGender(geder);
-                       admin.setRegion("MBEYA");
-                       admin.setDistrict("MBEYA");
+                       admin.setRegion(region.getSelectedItem().toString());
+                       admin.setDistrict(district.getSelectedItem().toString());
+                       admin.setWard(ward.getSelectedItem().toString());
                        admin.setPassword(admin.getSurname().toUpperCase());
-
-
-
 
                        boolean isInserted = my.insertdata(admin);
 
-                    /*   boolean isInserted=my.insertdata(editfname.getText().toString(),editMname.getText().toString(),editSname.getText().toString(),editEmail.getText().toString(),editphonenumber.getText().toString(),"31101998",geder,"Mbeya",
-                               "MBEYA","MBEYA",editSname.getText().toString().toUpperCase());*/
+
                        if (isInserted ==true)
                            Toast.makeText(Addadministrator.this, "Data inserted", Toast.LENGTH_LONG).show();
                        else

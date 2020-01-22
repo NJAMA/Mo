@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Addadministrator">
@@ -12,7 +26,7 @@
         android:layout_height="42dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="@string/firstname"
         android:inputType="textPersonName"
@@ -27,7 +41,7 @@
         android:layout_height="39dp"
         android:layout_marginStart="67dp"
         android:layout_marginLeft="67dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="56dp"
         android:layout_marginRight="56dp"
         android:ems="10"
@@ -91,13 +105,13 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="231dp"
-        android:layout_height="37dp"
+        android:layout_width="196dp"
+        android:layout_height="34dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
-        android:orientation="horizontal"
         android:onClick="onClicka"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText15">
 
@@ -112,16 +126,15 @@
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FEMALE"
             android:onClick="onClicka"
-            />
+            android:text="FEMALE" />
 
     </RadioGroup>
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="69dp"
-        android:layout_height="35dp"
+        android:layout_width="65dp"
+        android:layout_height="28dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="16dp"
@@ -132,6 +145,18 @@
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText15" />
+
+
+    <!--<LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="334dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">-->
 
 
     <Button
@@ -145,43 +170,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner5" />
-
-    <!--<LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="334dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="28dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup">-->
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.7" />
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="187dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="253dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="28dp"
         android:entries="@array/region"
         android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toStartOf="@+id/spinner5"
-        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <!-- </LinearLayout>-->
-
     <Spinner
         android:id="@+id/spinner5"
-        android:layout_width="162dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_width="247dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/district"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="251dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="20dp"
         android:entries="@array/ward"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

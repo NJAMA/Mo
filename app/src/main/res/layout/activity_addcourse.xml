@@ -1,115 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addcourse">
+    android:fillViewport="true">
 
-    <Spinner
-        android:id="@+id/spinner8"
-        android:layout_width="295dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText13" />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addCourse">
+
 
     <EditText
         android:id="@+id/editText17"
-        android:layout_width="311dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="289dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="152dp"
         android:ems="10"
+        android:hint="PROGRAMMECODE"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner6" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText13"
-        android:layout_width="308dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="277dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="programme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText17" />
-
 
     <Button
         android:id="@+id/button111"
         android:layout_width="245dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="108dp"
         android:background="@drawable/rounded"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner6"
-        android:layout_width="294dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.866" />
 
     <Spinner
         android:id="@+id/spinner10"
         android:layout_width="291dp"
         android:layout_height="39dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner9" />
-
-    <Spinner
-        android:id="@+id/spinner9"
-        android:layout_width="294dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="36dp"
+        android:entries="@array/year"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner8" />
+        app:layout_constraintTop_toBottomOf="@+id/editText13" />
 
     <LinearLayout
-        android:layout_width="291dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="59dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="290dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/button111"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner10"
-        app:layout_constraintVertical_bias="1.0">
-
-        <CheckBox
-            android:id="@+id/checkBox7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="CheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner10">
 
         <CheckBox
             android:id="@+id/checkBox8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="CheckBox" />
+            android:text="Core" />
+
+        <CheckBox
+            android:id="@+id/checkBox7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="option" />
+
     </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

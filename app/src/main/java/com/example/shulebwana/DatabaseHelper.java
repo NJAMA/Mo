@@ -20,11 +20,12 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
-    Context aa=
-ArrayList<String> aa= new ArrayList<>();
-    ArrayList<String> bb= new ArrayList<>();
 
-    private static int version=17;
+    String ss;
+
+
+
+    private static int version=25;
     private static String databasename="School";
     public static final String FIRSTNAME="FIRSTNAME";
     public static final String TABLE="ADMINSTRATOR";
@@ -49,10 +50,10 @@ ArrayList<String> aa= new ArrayList<>();
          BIRTHDATE +" TEXT," +GENDER+ " TEXT," +REGION+ " TEXT,"+WARD + " TEXT,"+ DISTRICT+ " TEXT, "+PASSWORD +" TEXT"+");";
 
 
-    private static String PROGRAMME="CREATE TABLE PROGRAMME("+_id+" TEXT PRIMARY KEY,"+ "NAME TEXT"+");";
+    private static String PROGRAMME="CREATE TABLE PROGRAMME("+_id+" TEXT PRIMARY KEY,"+ "NAME TEXT,"+"CHOICE TEXT"+");";
 
-    private static String COURSE="CREATE TABLE COURSE("+_id+" TEXT PRIMARY KEY,"+ "COURSENAME TEXT,"+"CREDITS TEXT,"+"YEAROFSTUDY TEXT,"+"SEMISTER TEXT,"+"CHOICE TEXT,"+"programmeid TEXT,"+
-            "FOREIGN KEY(programmeid) REFERENCES PROGRAMME("+_id+")" +");";
+    /*private static String COURSE="CREATE TABLE COURSE("+_id+" TEXT PRIMARY KEY,"+ "COURSENAME TEXT,"+"CREDITS TEXT,"+"YEAROFSTUDY TEXT,"+"SEMISTER TEXT,"+"CHOICE TEXT,"+"programmeid TEXT,"+
+            "FOREIGN KEY(programmeid) REFERENCES PROGRAMME("+_id+")" +");";*/
 
     private static String STUDENT="CREATE TABLE STUDENT(" + _id +" TEXT PRIMARY KEY,"  +FIRSTNAME+" TEXT,"+SECONDNAME+ " TEXT ,"+ SURNAME+" TEXT, " +EMAIL+" TEXT," + PHONENUMBER +" INTERGER ," +
             BIRTHDATE +" TEXT," +GENDER +" TEXT,  " +REGION+" TEXT,"+WARD +" TEXT,"+ DISTRICT+" TEXT , "+PASSWORD +" TEXT,"+ "programmeid TEXT,"+"FOREIGN KEY(programmeid) REFERENCES PROGRAMME("+_id+")"
@@ -60,15 +61,14 @@ ArrayList<String> aa= new ArrayList<>();
 
 
    private static String STAFF="CREATE TABLE STAFF(" + _id +" TEXT PRIMARY KEY,"  + FIRSTNAME+" TEXT,"+SECONDNAME+ " TEXT ,"+ SURNAME+" TEXT , " +EMAIL+" TEXT," + PHONENUMBER +" INTERGER ," +
-           BIRTHDATE +" TEXT," + GENDER +" TEXT,  "   +  REGION+" TEXT,"+WARD +" TEXT,"+ DISTRICT+" TEXT, " +PASSWORD +" TEXT,"+"courseid TEXT,"+"FOREIGN KEY(courseid) REFERENCES COURSE("+_id+")" +");";
+           BIRTHDATE +" TEXT," + GENDER +" TEXT,  "   +  REGION+" TEXT,"+WARD +" TEXT,"+ DISTRICT+" TEXT, " +PASSWORD +" TEXT,"+"programmeid TEXT,"+"FOREIGN KEY(programmeid) REFERENCES PROGRAMME("+_id+")" +");";
 
     private static String LOGIN="CREATE TABLE LOGIN("+"USERNAME TEXT PRIMARY KEY,"+"PASSWORD TEXT"+");";
 
 
-
     public DatabaseHelper(Context context) {
         super(context, databasename, null, version);
-        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+      SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
     }
 
 
@@ -76,20 +76,21 @@ ArrayList<String> aa= new ArrayList<>();
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         Data aa= new Data();
+        Programme p= new Programme();
        sqLiteDatabase.execSQL(ADMINSTRATOR);
        sqLiteDatabase.execSQL(PROGRAMME);
-        sqLiteDatabase.execSQL(COURSE);
+   /*     sqLiteDatabase.execSQL(COURSE);*/
         sqLiteDatabase.execSQL(STUDENT);
+        sqLiteDatabase.execSQL(p.insertprogramme);
         sqLiteDatabase.execSQL(LOGIN);
         sqLiteDatabase.execSQL(STAFF);
         sqLiteDatabase.execSQL(aa.createDistrictTable);
         sqLiteDatabase.execSQL(aa.createRegionTable);
         sqLiteDatabase.execSQL(aa.createWardTable);
         sqLiteDatabase.execSQL(aa.insertDistricts);
-/*        sqLiteDatabase.execSQL(aa.insertWardsGroup1);*/
-        sqLiteDatabase.execSQL(aa.insertWardsGroup2);
+     /*   sqLiteDatabase.execSQL(aa.insertWardsGroup1);*/
         sqLiteDatabase.execSQL(aa.insertRegions);
-
+        sqLiteDatabase.execSQL(aa.insertWardsGroup2);
 
     }
 
@@ -104,13 +105,13 @@ ArrayList<String> aa= new ArrayList<>();
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+"districts");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+"regions");
        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+"wards");
-        onCreate(sqLiteDatabase);
+       onCreate(sqLiteDatabase);
 
     }
 
     public boolean insertdata(Administrator adminn)
     {
-        SQLiteDatabase sq=this.getWritableDatabase();
+      SQLiteDatabase sq=this.getWritableDatabase();
 
         ContentValues contentValues= new ContentValues();
 
@@ -167,7 +168,7 @@ ArrayList<String> aa= new ArrayList<>();
 
         long result= sq.insert(TABLE2,null,contentValues);
         long resul= sq.insert(TABLE5,null,user);
-
+                  sq.close();
         if(result == -1)
             return false;
         else
@@ -208,12 +209,11 @@ ArrayList<String> aa= new ArrayList<>();
     }
 
 
-  public  List<String> getR()
+  public  ArrayList<String> getR()
     {
-
         SQLiteDatabase sq=this.getWritableDatabase();
         Cursor reg =sq.rawQuery("select region_name FROM regions ",null);
-
+        ArrayList<String> aa= new ArrayList<>();
         while(reg.moveToNext() )
         {
             String name = reg.getString(0);
@@ -224,11 +224,22 @@ ArrayList<String> aa= new ArrayList<>();
         return aa;
     }
 
-    public  List<String> getD(String s)
-    {
+    public  List<String> getD(String region) {
 
-        SQLiteDatabase sq=this.getWritableDatabase();
-        Cursor reg =sq.rawQuery("select district_name FROM districts ",null);
+        SQLiteDatabase sq = this.getWritableDatabase();
+        String[] sele = new String[]{region};
+        Cursor rag = sq.rawQuery("select region_code FROM regions WHERE region_name=?", sele);
+
+        while (rag.moveToNext()) {
+
+            ss = rag.getString(0);
+
+    }
+        String[] selectionArgs= new String[]{ss};
+        Cursor reg =sq.rawQuery("select district_name FROM districts WHERE region_code=?",selectionArgs);
+
+        ArrayList<String> bb= new ArrayList<>();
+
 
         while(reg.moveToNext() )
         {
@@ -240,22 +251,123 @@ ArrayList<String> aa= new ArrayList<>();
         return bb;
     }
 
-    public  List<String> getW(String s)
+
+
+
+
+    String naem;
+
+    public  List<String> getW(String distric)
     {
 
+
+        List<String>cc=new ArrayList<>();
         SQLiteDatabase sq=this.getWritableDatabase();
-        Cursor reg =sq.rawQuery("select district_name FROM districts ",null);
+      String[] selec=new String[]{distric};
+        Cursor qa=sq.rawQuery("select district_code FROM districts WHERE district_name=?",selec);
 
-        while(reg.moveToNext() )
+       while(qa.moveToNext()) {
+           naem = qa.getString(0);
+       }
+
+       String[] nnn=new String[]{naem};
+
+        Cursor rega=sq.rawQuery("select ward_name FROM wards WHERE district_code=? ",nnn);
+
+        while(rega.moveToNext() )
         {
-            String name = reg.getString(0);
+            String name = rega.getString(0);
 
-            bb.add(name);
+            cc.add(name);
         }
 
-        return bb;
+        return cc;
     }
+
+   String z;
+    String napp;
+    int bb;
+
+public String Studentidid()
+{
+    SQLiteDatabase sq=this.getWritableDatabase();
+
+    Cursor rag=sq.rawQuery("select _id FROM STUDENT",null);
+    if(rag.getCount()==0)
+     {
+        return"2020-04-0000";
+     }
+
+    boolean toLast = rag.moveToLast();
+
+    napp = rag.getString(0);
+
+             bb=Integer.parseInt(napp.substring(8,12));
+        ++bb;
+        z="2020-04-000"+bb;
+
+
+
+    return z;
+
+}
+
+  String zz;
+String aa;
+  public String staffid()
+  {
+
+      SQLiteDatabase sq=this.getWritableDatabase();
+      Cursor lap=sq.rawQuery("select _id FROM STAFF",null);
+      if(lap.getCount()==0)
+      {
+          return "0001A";
+
+      }
+      boolean tof=lap.moveToLast();
+
+      zz=lap.getString(0);
+
+     String ss= zz.substring(4);
+               char aa=ss.charAt(0);
+                ++aa;
+
+                String dd="0001"+aa;
+               return dd;
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 }
+

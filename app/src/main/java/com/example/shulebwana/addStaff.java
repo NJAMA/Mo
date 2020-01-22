@@ -4,14 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.shulebwana.modal.Staff;
 import com.example.shulebwana.modal.Student;
 import com.facebook.stetho.Stetho;
+
+import java.util.List;
 
 public class addStaff extends AppCompatActivity {
     public String geder;
@@ -21,12 +26,13 @@ public class addStaff extends AppCompatActivity {
     RadioGroup gender;
     Button butstudent;
     DatabaseHelper my;
+    Spinner region,district,ward;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_staff);
         Stetho.initializeWithDefaults(this);
-
+        my= new DatabaseHelper(this);
         editfname = (EditText) findViewById(R.id.editText3);
         editMname =  (EditText) findViewById(R.id.editText7);
         editSname = (EditText) findViewById(R.id.editText14);
@@ -34,8 +40,60 @@ public class addStaff extends AppCompatActivity {
         editphonenumber = (EditText) findViewById(R.id.editText9);
         Birthdate =(EditText) findViewById(R.id.editText15);
         butstudent = (Button) findViewById(R.id.button11);
+        region= findViewById(R.id.spinner7);
+        district = findViewById(R.id.spinner11);
+        ward = findViewById(R.id.spinner12);
 
-        regstrstaff();
+
+
+        List<String> regionsList = my.getR();
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, regionsList);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        region.setAdapter(dataAdapter);
+
+
+        region.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Populate districts
+                List<String> districtsList = my.getD(region.getItemAtPosition(position).toString());
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, districtsList);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                district.setAdapter(dataAdapter);
+
+                // Listen to district selection
+                district.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        // Populate districts
+                        List<String> wardList = my.getW(district.getItemAtPosition(position).toString());
+                        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, wardList);
+                        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        ward.setAdapter(dataAdapter);
+
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // your code here
+                    }
+
+                });
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+
+
+                        regstrstaff();
 
 
 
@@ -64,7 +122,7 @@ public class addStaff extends AppCompatActivity {
                     public void onClick(View view) {
 
                         Staff staff=new Staff();
-                        staff.setStaffid("565456111");
+                        staff.setStaffid(my.staffid());
                         staff.setFirstname(editfname.getText().toString());
                         staff.setSecondname(editMname.getText().toString());
                         staff.setSurname(editSname.getText().toString());
@@ -72,9 +130,9 @@ public class addStaff extends AppCompatActivity {
                         staff.setBirthdate(Birthdate.getText().toString());
                         staff.setPhonenumber(editphonenumber.getText().toString());
                         staff.setGender(geder);
-                        staff.setRegion("MBEYA");
-
-                        staff.setDistrict("MBEYA");
+                        staff.setRegion(region.toString());
+                        staff.setDistrict(district.toString());
+                        staff.setWard(ward.toString());
                         staff.setPassword(staff.getSurname().toUpperCase());
 
 

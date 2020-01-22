@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
   public void onclick(View v)
   {
 
-      Intent aa=new Intent(this,Addadministrator.class);
+      Intent aa=new Intent(this,Administrator.class);
          startActivity(aa);
 
 
