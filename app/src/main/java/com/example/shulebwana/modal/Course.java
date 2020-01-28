@@ -5,8 +5,21 @@ public class Course {
 
     public String Coursecode;
     public String Coursename;
-    public int credits;
-    public int yearofstudy;
+    public String credits;
+    public String yearofstudy;
+
+    public String getPro() {
+        return Pro;
+    }
+
+    public void setPro(String pro) {
+        Pro = pro;
+    }
+
+    public String Pro;
+
+
+
 
     public String getCoursecode() {
         return Coursecode;
@@ -24,29 +37,29 @@ public class Course {
         Coursename = coursename;
     }
 
-    public int getCredits() {
+    public String getCredits() {
         return credits;
     }
 
-    public void setCredits(int credits) {
+    public void setCredits(String credits) {
         this.credits = credits;
     }
 
-    public int getYearofstudy() {
+    public String getYearofstudy() {
         return yearofstudy;
     }
 
-    public void setYearofstudy(int yearofstudy) {
+    public void setYearofstudy(String yearofstudy) {
         this.yearofstudy = yearofstudy;
     }
 
-    public int getSemister() {
+    public String getSemister() {
         return semister;
     }
 
-    public void setSemister(int semister) {
+    public void setSemister(String semister) {
         this.semister = semister;
     }
 
-    public int semister;
+    public String semister;
 }

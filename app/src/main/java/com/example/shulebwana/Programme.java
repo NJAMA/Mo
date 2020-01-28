@@ -7,11 +7,11 @@ public String insertprogramme;
 
 public Programme(){
 
-this.insertprogramme="INSERT INTO 'programme'('_Id','NAME')VALUES"+
-                       "('C11','BSC IN COMPUTER SCIENCE'),"+
-			"('C12','BSC IN COMPUTER ENGINEERING '),"+
-                         "('C13','BSC IN TELCOM'),"+
-                          "('C14','BSC IN ELECTRONIC')";  
+this.insertprogramme="INSERT INTO 'PROGRAMME'('NAME') VALUES"+
+                       "('BSC IN COMPUTER SCIENCE'),"+
+		            	"('BSC IN COMPUTER ENGINEERING'),"+
+                         "('BSC IN TELCOM'),"+
+                          "('BSC IN ELECTRONIC')";
 }
 
 

@@ -43,6 +43,13 @@ public class addStaff extends AppCompatActivity {
         region= findViewById(R.id.spinner7);
         district = findViewById(R.id.spinner11);
         ward = findViewById(R.id.spinner12);
+        /*pro=findViewById(R.id.spinner14);
+
+        List<String> programmes= my.getProgramme();
+        ArrayAdapter<String> data = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,programmes );
+        data.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pro.setAdapter(data);*/
+
 
 
 
@@ -134,6 +141,7 @@ public class addStaff extends AppCompatActivity {
                         staff.setDistrict(district.toString());
                         staff.setWard(ward.toString());
                         staff.setPassword(staff.getSurname().toUpperCase());
+//                        staff.setPro();
 
 
 

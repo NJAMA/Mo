@@ -24,7 +24,7 @@ public class AddStudent extends AppCompatActivity {
     EditText editfname, editSname, editMname, editEmail, editphonenumber, Birthdate;
     RadioGroup gender;
     Button butstudent;
-    Spinner region,district,ward;
+    Spinner region,district,ward,pro;
     DatabaseHelper my;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +42,20 @@ public class AddStudent extends AppCompatActivity {
          region= findViewById(R.id.spinner3);
          district=findViewById(R.id.spinner4);
          ward=findViewById(R.id.spinner13);
+         pro=findViewById(R.id.spinner14);
+
+        List<String> programmes= my.getProgramme();
+        ArrayAdapter<String> data = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,programmes );
+        data.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pro.setAdapter(data);
+
+
+
 
         List<String> regionsList = my.getR();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, regionsList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         region.setAdapter(dataAdapter);
-
-
 
 
         region.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -132,6 +139,7 @@ public class AddStudent extends AppCompatActivity {
                        student.setDistrict(district.getSelectedItem().toString());
                        student.setWard(ward.getSelectedItem().toString());
                        student.setPassword(student.getSurname().toUpperCase());
+                       student.setPro(pro.getSelectedItem().toString());
 
 
 

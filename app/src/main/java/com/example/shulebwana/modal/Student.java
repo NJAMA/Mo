@@ -15,6 +15,20 @@ public class Student {
     public String password;
     public String District;
 
+    public String getPro() {
+        return pro;
+    }
+
+    public void setPro(String pro) {
+        this.pro = pro;
+    }
+
+    public String getStudentid() {
+        return Studentid;
+    }
+
+    public String pro;
+
     public String getGender() {
         return gender;
     }

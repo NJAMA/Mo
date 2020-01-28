@@ -18,6 +18,16 @@ public class Staff {
     public String password;
     public String Staffid ;
 
+    public String getPro() {
+        return Pro;
+    }
+
+    public void setPro(String pro) {
+        Pro = pro;
+    }
+
+    public String Pro;
+
 
 
 

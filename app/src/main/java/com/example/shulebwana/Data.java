@@ -469,7 +469,7 @@ public class Data {
                 "('MALIBWI', 21715, 217)," +
                 "('RANGWI', 21716, 217)," +
                 "('MWANGOI', 21717, 217)," +
-                "('DULEM, 21718, 217)," +
+                "('DULEM', 21718, 217)," +
                 "('HEMTOYE', 21719, 217)," +
                 "('MALINDI', 21720, 217)," +
                 "('MLALO', 21721, 217)," +
@@ -2498,9 +2498,9 @@ public class Data {
                 "('Tambalale', 45635, 456)," +
                 "('Kaliua', 45701, 457)," +
                 "('Ushokola', 45702, 457)," +
-                "('Ugunga', 45703, 457)";
-        this.insertWardsGroup2 = "INSERT INTO `wards` (`ward_name`, `ward_code`, `district_code`) VALUES" +
-                "('Kazaroho', 45704, 457)," +
+                "('Ugunga', 45703, 457),"+
+                "('Kazaroho', 45704, 457)";
+        this.insertWardsGroup2 = "INSERT INTO `wards` (`ward_name`, `ward_code`, `district_code`) VALUES" +    // this.insertWardsGroup1 = "INSERT INTO `wards` (`ward_name`, `ward_code`, `district_code`) VALUES" +
                 "('Igwisi', 45705, 457)," +
                 "('Ukumbi Siganga', 45706, 457)," +
                 "('Zugimlole', 45707, 457)," +

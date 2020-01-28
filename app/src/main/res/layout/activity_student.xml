@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true" >
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -141,7 +141,7 @@
         android:id="@+id/button11"
         android:layout_width="302dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/rounded"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -149,13 +149,14 @@
         app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner14"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/spinner3"
         android:layout_width="212dp"
         android:layout_height="37dp"
         android:layout_marginTop="24dp"
+        android:entries="@array/region"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
@@ -165,9 +166,10 @@
         android:id="@+id/spinner4"
         android:layout_width="214dp"
         android:layout_height="41dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
+        android:entries="@array/district"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
@@ -175,19 +177,19 @@
         android:id="@+id/spinner13"
         android:layout_width="208dp"
         android:layout_height="41dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner4" />
 
     <Spinner
         android:id="@+id/spinner14"
-        android:layout_width="309dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="220dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner13" />
 

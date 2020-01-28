@@ -25,17 +25,10 @@ import java.util.List;
 public class Addadministrator extends AppCompatActivity  {
 
 
-/*
-    LocalDate currentdate = LocalDate.now();
-
-    int aa=currentdate.getYear();
-*/
-String ab="2020";
 
 
 
     public String geder;
-
 
     DatabaseHelper my;
     EditText editfname, editSname, editMname, editEmail, editphonenumber, Birthdate;
@@ -132,8 +125,8 @@ String ab="2020";
                    @Override
                    public void onClick(View view) {
                      Administrator admin= new Administrator();
-                     admin.setAdmin_no("ASW");
-                       admin.setFirstname(editfname.getText().toString());
+                     admin.setAdmin_no("ADMIN");
+                    admin.setFirstname(editfname.getText().toString());
                        admin.setSecondname(editMname.getText().toString());
                        admin.setSurname(editSname.getText().toString());
                        admin.setEmail(editEmail.getText().toString());
@@ -144,6 +137,7 @@ String ab="2020";
                        admin.setDistrict(district.getSelectedItem().toString());
                        admin.setWard(ward.getSelectedItem().toString());
                        admin.setPassword(admin.getSurname().toUpperCase());
+
 
                        boolean isInserted = my.insertdata(admin);
 
