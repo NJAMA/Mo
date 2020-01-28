@@ -483,7 +483,7 @@ ArrayList<Login> liii= new ArrayList<Login>();
 
     Cursor lapp=sq.rawQuery("select * FROM LOGIN WHERE username=? AND password=?",userr);
 
-lapp.moveToFirst();
+lapp.moveToNext();
 
 Login aa= new Login();
 
@@ -500,6 +500,16 @@ return aa;
 public  void getStudent(){
 
     SQLiteDatabase sq =this.getReadableDatabase();
+    Cursor lapa=sq.rawQuery("select * FROM STUDENT ",null);
+    lapa.moveToFirst();
+String a=lapa.getString(6);
+
+
+ArrayList<String> aa= new ArrayList<>();
+aa.add(a);
+
+
+
 
 
 

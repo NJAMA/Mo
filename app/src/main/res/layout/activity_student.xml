@@ -21,7 +21,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="@string/firstname"
+        android:autofillHints="@string/firstname"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/editText7"
         app:layout_constraintHorizontal_bias="0.0"
@@ -153,8 +153,8 @@
 
     <Spinner
         android:id="@+id/spinner3"
-        android:layout_width="212dp"
-        android:layout_height="37dp"
+        android:layout_width="263dp"
+        android:layout_height="45dp"
         android:layout_marginTop="24dp"
         android:entries="@array/region"
         app:layout_constraintEnd_toEndOf="parent"
@@ -164,8 +164,8 @@
 
     <Spinner
         android:id="@+id/spinner4"
-        android:layout_width="214dp"
-        android:layout_height="41dp"
+        android:layout_width="287dp"
+        android:layout_height="48dp"
         android:layout_marginTop="36dp"
         android:entries="@array/district"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,8 +175,8 @@
 
     <Spinner
         android:id="@+id/spinner13"
-        android:layout_width="208dp"
-        android:layout_height="41dp"
+        android:layout_width="281dp"
+        android:layout_height="37dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.453"
@@ -185,11 +185,11 @@
 
     <Spinner
         android:id="@+id/spinner14"
-        android:layout_width="220dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="279dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner13" />
 

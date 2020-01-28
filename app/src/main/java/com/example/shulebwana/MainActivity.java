@@ -77,7 +77,7 @@ else if (aaaa.getRole().equals("3")&&aaaa.getPassword().equals(day.getPassword()
 
     public void aaa()
     {
-        Intent one= new Intent(this, Student.class);
+        Intent one= new Intent(this, student.class);
         startActivity(one);
 
     }
