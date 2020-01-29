@@ -26,7 +26,7 @@ public class addStaff extends AppCompatActivity {
     RadioGroup gender;
     Button butstudent;
     DatabaseHelper my;
-    Spinner region,district,ward;
+    Spinner region,district,ward,pro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,12 +43,12 @@ public class addStaff extends AppCompatActivity {
         region= findViewById(R.id.spinner7);
         district = findViewById(R.id.spinner11);
         ward = findViewById(R.id.spinner12);
-        /*pro=findViewById(R.id.spinner14);
+        pro=findViewById(R.id.spinner15);
 
         List<String> programmes= my.getProgramme();
         ArrayAdapter<String> data = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,programmes );
         data.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        pro.setAdapter(data);*/
+        pro.setAdapter(data);
 
 
 
@@ -141,7 +141,7 @@ public class addStaff extends AppCompatActivity {
                         staff.setDistrict(district.toString());
                         staff.setWard(ward.toString());
                         staff.setPassword(staff.getSurname().toUpperCase());
-//                        staff.setPro();
+                          staff.setPro(pro.getSelectedItem().toString());
 
 
 

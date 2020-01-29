@@ -5,15 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-
 import com.example.shulebwana.modal.Administrator;
 import com.example.shulebwana.modal.Course;
 import com.example.shulebwana.modal.Login;
 import com.example.shulebwana.modal.Staff;
 import com.example.shulebwana.modal.Student;
-import com.facebook.stetho.inspector.database.SqliteDatabaseDriver;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,20 +126,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(DISTRICT, adminn.getDistrict());
         contentValues.put(PASSWORD, adminn.getPassword());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         user.put("USERNAME", adminn.getAdmin_no());
         user.put(PASSWORD, adminn.getPassword());
         user.put("ROLE",1);
@@ -188,8 +171,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             case "BSC IN COMPUTER ENGINEERING":
                 a="2";
+                break;
             case "BSC IN TELCOM":
                 a="3";
+                break;
             case"BSC IN ELECTRONIC":
                 a="4";
 
@@ -230,8 +215,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             case "BSC IN COMPUTER ENGINEERING":
                 a="2";
+                break;
             case "BSC IN TELCOM":
                 a="3";
+                break;
             case"BSC IN ELECTRONIC":
                 a="4";
 
@@ -291,8 +278,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             case "BSC IN COMPUTER ENGINEERING":
                 a="2";
+                break;
             case "BSC IN TELCOM":
                 a="3";
+                break;
             case"BSC IN ELECTRONIC":
                 a="4";
 
@@ -384,7 +373,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 return qa;
 
     }
-
 
 
 
@@ -497,16 +485,30 @@ return aa;
 
 
 
-public  void getStudent(){
+    public Student viewAllStudents(){
 
-    SQLiteDatabase sq =this.getReadableDatabase();
-    Cursor lapa=sq.rawQuery("select * FROM STUDENT ",null);
-    lapa.moveToFirst();
-String a=lapa.getString(6);
+        SQLiteDatabase db=this.getWritableDatabase ();
+        List<Student> students=new ArrayList<> ();
+Student aa= new Student();
+        Cursor cursor=db.rawQuery ("select*from "+"STUDENT",null);
+
+      boolean b=cursor.moveToFirst ();
+                Student student=new Student ();
+                student.setStudentid(cursor.getString(0));
+                student.setFirstname (cursor.getString (1));
+                student.setPro (cursor.getString (12));
+                student.setSurname (cursor.getString (7));
+
+                students.add(student);
+
+           /* }while (cursor.moveToNext ());
+
+        }*/
+
+        return student;
+    }
 
 
-ArrayList<String> aa= new ArrayList<>();
-aa.add(a);
 
 
 
@@ -514,7 +516,15 @@ aa.add(a);
 
 
 
-}
+
+
+
+
+
+
+
+
+
 
 
 public void getSraff()

@@ -12,7 +12,7 @@ import com.example.shulebwana.modal.Login;
 import com.example.shulebwana.modal.Student;
 import com.facebook.stetho.Stetho;
 
-public class MainActivity extends AppCompatActivity {
+public class loginActivity extends AppCompatActivity {
 
     DatabaseHelper my;
 
@@ -34,6 +34,31 @@ public class MainActivity extends AppCompatActivity {
 onclick();
 
     }
+
+
+
+
+
+
+    public  void aa(View view){
+        Intent intent = new Intent(this, Administrator.class);
+        startActivity(intent);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   public void onclick() {
 
@@ -65,6 +90,16 @@ else if (aaaa.getRole().equals("3")&&aaaa.getPassword().equals(day.getPassword()
            staff();
 
               }
+
+else {
+
+
+
+
+}
+
+
+
 
 
           }
@@ -100,7 +135,9 @@ public void staff()
 
 
 
+
 }
+
 
 
 
