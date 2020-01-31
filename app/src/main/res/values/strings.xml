@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">ShuleBwana</string>
+    <string name="forgot">Forgot Password ?</string>
+    <string name="student">ADD STUDENT</string>
+    <string name="course">ADD COURSE</string>
+    <string name="instructor">ADD INSTRUCTOR</string>
+    <string name="viewstudent">VIEW STUDENT</string>
+    <string name="viewinstrcu">VIEW INSTRUCTOR</string>
+    <string name="viewcourse">VIEWCOURSE</string>
+    <string name="firstname">FirstName</string>
+    <string name="Secondname">SecondName</string>
+    <string name="Suname">SurName</string>
+    <string name="email">Your email</string>
+    <string name="phone">Phone Number</string>
+    <string name="stdyy">Study year</string>
+    <string name="stdysemi">Study semister</string>
+    <string name="date">Birthdate:31092019</string>
+    <string name="gender">GENDER</string>
+    <string name="coursename">COURSENAME</string>
+    <string name="COODE">COURSECODE</string>
+    <string name="credits">credits</string>
+    <string name="prognme">ProgrammeName</string>
+
+    <string-array name="region">
+        <item>Select Region</item>
+    </string-array>
+    <string-array name="district">
+        <item>Select District</item>
+    </string-array>
+    <string-array name="ward">
+        <item>Select Ward</item>
+    </string-array>
+    <string-array name="year">
+        <item> Select year of study</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="credits">
+        <item>Select credits</item>
+        <item>8</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="semistera">
+        <item>select semister</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+</resources>

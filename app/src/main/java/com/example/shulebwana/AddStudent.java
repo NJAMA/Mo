@@ -127,6 +127,7 @@ public class AddStudent extends AppCompatActivity {
 
 
                         Student student= new Student();
+
                       student.setStudentid(my.Studentidid());
                        student.setFirstname(editfname.getText().toString());
                        student.setSecondname(editMname.getText().toString());
